@@ -85,7 +85,7 @@ export const NetworkInfoForm = ({
 			mt={5}
 		>
 			<Heading.h3 align="center" mb={4}>
-				Hi! Please choose your WiFi from the list
+				Please select your Wifi and enter your password.
 			</Heading.h3>
 
 			<Form
