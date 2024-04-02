@@ -49,7 +49,17 @@ When the network credentials have been entered, WiFi Connect will disable the ac
 
 ---
 
-For a complete list of command line arguments and environment variables check out our [command line arguments](./docs/command-line-arguments.md) guide.
+For a complete list of command line arguments and (mostly complete list of) environment variables check out our [command line arguments](./docs/command-line-arguments.md) guide.
+
+In addition to the environment variables listed in the document, this branch adds two additional environment variables:
+
+`STARTUP_WAIT_TIME` - The delay (in seconds) to wait for a connection on startup before launching the access point. The default is 10 seconds.
+
+`RECOVERY_TIME` - The delay (in seconds) after losing connectivity before launching the access point. The default is 60 seconds.
+
+The intent behind these additional variables is to reduce unnecessary use of the access point (AP.) We do this by waiting for connectivity (with a timeout) at startup (STARTUP_WAIT_TIME) and after losing connectivity (RECOVERY_TIME). As soon as connectivity is achieved, the normal wait process returns where we check for connectivity every CHECK_CONN_FREQ seconds. Only if these connectivity waits time-out do we launch the AP. Also note that when waiting for connectivity, if connectivity is achieved, the wait is aborted.
+
+This allows the AP to run for a longer time, being more confident that it is the only way to achieve connectivity.
 
 The full application flow is illustrated in the [state flow diagram](./docs/state-flow-diagram.md).
 
