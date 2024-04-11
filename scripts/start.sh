@@ -1,7 +1,7 @@
 #!/bin/busybox sh
 
 # The goal of the logic in this script is to reduce unnecessary use of the access point (AP.)
-# We do this by waiting for connectivity (with a timeout) at startup and after losing
+# We do this by waiting for connectivity (with a timeout) at startup (STARTUP_WAIT_TIME) and after losing
 # connectivity (RECOVERY_TIME). As soon as connectivity is achieved, control returns to the main loop and we
 # avoid the need for the AP. Only if the connectivity wait times out do we launch the AP.
 #
